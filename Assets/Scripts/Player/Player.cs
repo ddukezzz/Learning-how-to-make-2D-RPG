@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : Entity
 {
     public static event Action OnPlayerDeath;
+    private UI ui;
     
     public PlayerInputSet input{get; private set;}
     
@@ -42,7 +43,8 @@ public class Player : Entity
     protected override void Awake()
     {
         base.Awake();
-        
+
+        ui = FindAnyObjectByType<UI>();
         input = new PlayerInputSet();
 
         idleState = new Player_IdleState(this, stateMachine, "Idle");
@@ -132,6 +134,8 @@ public class Player : Entity
         
         input.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         input.Player.Movement.canceled += ctx => moveInput = Vector2.zero;
+
+        input.Player.ToogleSkillTreeUI.performed += ctx => ui.ToggleSkillTreeUI();
     }
 
     private void OnDisable()
