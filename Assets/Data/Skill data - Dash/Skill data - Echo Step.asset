@@ -10,9 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f7cf9f8d24c4bb4fb5b19e4e991e5e5, type: 3}
-  m_Name: Skill data - Timeless Attack
+  m_Name: Skill data - Echo Step
   m_EditorClassIdentifier: Assembly-CSharp::Skill_DataSO
   cost: 2
-  displayName: Timeless Attack
-  description: The Time Echo can perform 1 attack.
-  icon: {fileID: 1047042642, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}
+  unlockedByDefault: 0
+  skillType: 0
+  upgradeData:
+    upgradeType: 2
+    cooldown: 3
+  displayName: Echo Step
+  description: Create an Echo at the start of your Dash. (Inherits all Upgrades from
+    your Time Echo skill).
+  icon: {fileID: 1674031913, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}

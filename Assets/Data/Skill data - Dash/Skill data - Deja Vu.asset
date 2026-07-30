@@ -10,10 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f7cf9f8d24c4bb4fb5b19e4e991e5e5, type: 3}
-  m_Name: Skill data - Cleanse
+  m_Name: Skill data - Deja Vu
   m_EditorClassIdentifier: Assembly-CSharp::Skill_DataSO
   cost: 3
-  displayName: Cleanse
-  description: Healing Wisp also reduces the Duration of the Negative Status Effect
-    by 1 second.
-  icon: {fileID: -1634611639, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}
+  unlockedByDefault: 0
+  skillType: 0
+  upgradeData:
+    upgradeType: 3
+    cooldown: 3
+  displayName: Deja Vu
+  description: Create an Echo at the end of your Dash. (Inherist all Upgrades from
+    your Time Echo skill).
+  icon: {fileID: 1078488112, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}

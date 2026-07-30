@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Entity_VFX : MonoBehaviour
 {
-    private SpriteRenderer sr;
+    protected SpriteRenderer sr;
     private Entity entity;
     
     [Header("On Taking Damage VFX")] 
@@ -78,11 +78,11 @@ public class Entity_VFX : MonoBehaviour
         sr.color = Color.white;
     }
 
-    public void CreateOnHitVFX(Transform target, bool isCrit)
+    public void CreateOnHitVFX(Transform target, bool isCrit, ElementType element)
     {
         GameObject hitPrefab = isCrit ? critHitVfx : hitVfx;
         GameObject vfx = Instantiate(hitPrefab, target.position, Quaternion.identity);
-        vfx.GetComponentInChildren<SpriteRenderer>().color = hitVfxColor;
+        // vfx.GetComponentInChildren<SpriteRenderer>().color = GetElementalColor(element);
 
         if (entity.facingDirection == -1 && isCrit)
         {
@@ -90,16 +90,14 @@ public class Entity_VFX : MonoBehaviour
         }
     }
 
-    public void UpdateOnHitColor(ElementType element)
+    public Color GetElementalColor(ElementType element)
     {
-        if (element == ElementType.Ice)
+        switch (element)
         {
-            hitVfxColor = chillVfx;
-        }
-
-        if (element == ElementType.None)
-        {
-            hitVfxColor = originalHitVfxColor;
+            case ElementType.Ice: return chillVfx;
+            case ElementType.Fire: return burnVfx;
+            case ElementType.Lightning: return electricVfx;
+            default: return Color.white;
         }
     }
 

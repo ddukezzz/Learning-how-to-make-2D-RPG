@@ -10,9 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f7cf9f8d24c4bb4fb5b19e4e991e5e5, type: 3}
-  m_Name: Skill data - Time Echo
+  m_Name: Skill data - Lost Shard
   m_EditorClassIdentifier: Assembly-CSharp::Skill_DataSO
-  cost: 1
-  displayName: Time Echo
-  description: Create a Time Echo of yourself. The Echo distracts Enemies nearby.
-  icon: {fileID: -1324178227, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}
+  cost: 2
+  unlockedByDefault: 0
+  skillType: 0
+  upgradeData:
+    upgradeType: 4
+    cooldown: 3
+  displayName: Lost Shard
+  description: Create a Time Shard at the start of your Dash. (Inherits all Upgrades
+    from your Time Shard skill).
+  icon: {fileID: -826277860, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}

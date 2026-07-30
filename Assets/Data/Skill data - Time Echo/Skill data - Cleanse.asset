@@ -10,10 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f7cf9f8d24c4bb4fb5b19e4e991e5e5, type: 3}
-  m_Name: Skill data - Healing Wisp
+  m_Name: Skill data - Cleanse
   m_EditorClassIdentifier: Assembly-CSharp::Skill_DataSO
-  cost: 2
-  displayName: Healing Wisp
-  description: When the Echo dies from Enemies attack, It releases a Healing Wisp
-    that moves toward you and heals on contact.
-  icon: {fileID: 1268377979, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}
+  cost: 3
+  unlockedByDefault: 0
+  skillType: 1
+  upgradeData:
+    upgradeType: 0
+    cooldown: 0
+  displayName: Cleanse
+  description: Healing Wisp also reduces the Duration of the Negative Status Effect
+    by 1 second.
+  icon: {fileID: -1634611639, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}
