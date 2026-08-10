@@ -23,6 +23,13 @@ public class Entity_StatusHandler : MonoBehaviour
         entityVfx = GetComponent<Entity_VFX>();
     }
 
+    public void RemoveAllNegativeEffects()
+    {
+        StopAllCoroutines();
+        currentEffect = ElementType.None;
+        entityVfx.StopAllVFX();
+    }
+
     public void ApplyStatusEffect(ElementType element, ElementalEffectData effectData)
     {
         if (element == ElementType.Ice && CanBeApplied(ElementType.Ice))
@@ -41,7 +48,7 @@ public class Entity_StatusHandler : MonoBehaviour
         }
     }
 
-    public void ApplyElectrifiedEffect(float duration, float damage, float charge)
+    private void ApplyElectrifiedEffect(float duration, float damage, float charge)
     {
         float lightningRes = entityStats.GetElementalResistance(ElementType.Lightning);
         float finalCharge = charge * (1 - lightningRes);
@@ -85,7 +92,7 @@ public class Entity_StatusHandler : MonoBehaviour
         StopElectrifiedEffect();
     }
 
-    public void ApplyBurnedEffect(float duration, float fireDamage)
+    private void ApplyBurnedEffect(float duration, float fireDamage)
     {
         float fireRes = entityStats.GetElementalResistance(ElementType.Fire);
         float finalDamage = fireDamage * (1 - fireRes);
@@ -112,8 +119,8 @@ public class Entity_StatusHandler : MonoBehaviour
         
         currentEffect = ElementType.None;
     }
-    
-    public void ApplyChilledEffect(float duration, float slowMultiplier)
+
+    private void ApplyChilledEffect(float duration, float slowMultiplier)
     {
         float iceRes = entityStats.GetElementalResistance(ElementType.Ice);
         float finalDuration = duration * (1  - iceRes);

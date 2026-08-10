@@ -12,12 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7cf9f8d24c4bb4fb5b19e4e991e5e5, type: 3}
   m_Name: Skill data - Time Echo
   m_EditorClassIdentifier: Assembly-CSharp::Skill_DataSO
+  displayName: Time Echo
+  description: Create a Time Echo of yourself. The Echo distracts Enemies nearby.
+  icon: {fileID: -1324178227, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}
   cost: 1
   unlockedByDefault: 0
   skillType: 1
   upgradeData:
-    upgradeType: 0
+    upgradeType: 15
     cooldown: 0
-  displayName: Time Echo
-  description: Create a Time Echo of yourself. The Echo distracts Enemies nearby.
-  icon: {fileID: -1324178227, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}
+    damageScaleData:
+      physical: 1
+      elemental: 1
+      chillDuration: 3
+      chillSlowMultiplier: 0.2
+      burnDuration: 3
+      burnDamageScale: 1
+      shockDuration: 3
+      shockDamageScale: 1
+      shockCharge: 3

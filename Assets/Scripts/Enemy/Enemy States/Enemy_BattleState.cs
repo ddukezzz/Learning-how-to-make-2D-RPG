@@ -3,6 +3,7 @@ using UnityEngine;
 public class Enemy_BattleState : EnemyState
 {
     private Transform player;
+    private Transform lastTarget;
     private float lastTimeWasInBattle;
     
     public Enemy_BattleState(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
@@ -18,7 +19,7 @@ public class Enemy_BattleState : EnemyState
         
         if (ShouldRetreat())
         {
-            rb.linearVelocity = new Vector2(enemy.retreatVelocity.x * -DirectionToPlayer(), enemy.retreatVelocity.y);
+            rb.linearVelocity = new Vector2((enemy.retreatVelocity.x * enemy.activeSlowMultiplier) * -DirectionToPlayer(), enemy.retreatVelocity.y);
             enemy.HandleFlip(DirectionToPlayer());
         }
     }
@@ -29,6 +30,7 @@ public class Enemy_BattleState : EnemyState
 
         if (enemy.PlayerDetection())
         {
+            UpdateTargetIfNeeded();
             UpdateBattleTimer();
         }
 
@@ -43,7 +45,20 @@ public class Enemy_BattleState : EnemyState
         }
         else
         {
-            enemy.SetVelocity(enemy.battleMoveSpeed * DirectionToPlayer(), rb.linearVelocity.y);
+            enemy.SetVelocity(enemy.GetBattleMoveSpeed() * DirectionToPlayer(), rb.linearVelocity.y);
+        }
+    }
+
+    private void UpdateTargetIfNeeded()
+    {
+        if (enemy.PlayerDetection() == false) return;
+        
+        Transform newTarget = enemy.PlayerDetection().transform;
+
+        if (newTarget != lastTarget)
+        {
+            lastTarget = newTarget;
+            player = newTarget;
         }
     }
 

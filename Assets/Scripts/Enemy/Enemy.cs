@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Enemy : Entity
 {
+    public Enemy_Health health {get; private set;}
     public Enemy_IdleState idleState;
     public Enemy_MoveState moveState;
     public Enemy_AttackState attackState;
@@ -33,26 +34,34 @@ public class Enemy : Entity
     [SerializeField] private float playerCheckDistance = 10;
     
     public Transform player {get; private set;}
+    public float activeSlowMultiplier { get; private set; } = 1;
+    
+    public float GetMoveSpeed() => moveSpeed * activeSlowMultiplier;
+    public float GetBattleMoveSpeed() => battleMoveSpeed * activeSlowMultiplier;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        health = GetComponent<Enemy_Health>();
+    }
 
     protected override IEnumerator SlowDownEntityCo(float duration, float slowMultiplier)
     {
-        float originalMoveSpeed = moveSpeed;
-        float originalBattleMoveSpeed = battleMoveSpeed;
-        float originalAnimSpeed = anim.speed;
+        activeSlowMultiplier = 1 - slowMultiplier;
         
-        float speedMultiplier = 1 - slowMultiplier;
-        
-        moveSpeed = moveSpeed * speedMultiplier;
-        battleMoveSpeed = battleMoveSpeed * speedMultiplier;
-        anim.speed = anim.speed * speedMultiplier;
+        anim.speed = anim.speed * activeSlowMultiplier;
         
         yield return new WaitForSeconds(duration);
-        
-        moveSpeed = originalMoveSpeed;
-        battleMoveSpeed = originalBattleMoveSpeed;
-        anim.speed = originalAnimSpeed;
+        StopSlowDown();
     }
-    
+
+    public override void StopSlowDown()
+    {
+        activeSlowMultiplier = 1;
+        anim.speed = 1;
+        base.StopSlowDown();
+    }
+
     public void EnableCounterWindow(bool enable) => canBeStunned = enable;
     
     public override void EntityDeath()
