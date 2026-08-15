@@ -12,6 +12,7 @@ public class Player : Entity
     public Entity_Health health {get; private set;}
     public Player_SkillManager skillManager {get; private set;}
     public Entity_StatusHandler statusHandler {get; private set;}
+    public Player_Combat combat {get; private set;}
     
     public Player_IdleState idleState {get; private set;}
     public Player_MoveState moveState {get; private set;}
@@ -57,10 +58,12 @@ public class Player : Entity
 
         ui = FindAnyObjectByType<UI>();
         vfx = GetComponent<Player_VFX>();
-        input = new PlayerInputSet();
         health = GetComponent<Entity_Health>();
         skillManager = GetComponent<Player_SkillManager>();
         statusHandler = GetComponent<Entity_StatusHandler>();
+        combat = GetComponent<Player_Combat>();
+        
+        input = new  PlayerInputSet();
 
         idleState = new Player_IdleState(this, stateMachine, "Idle");
         moveState = new Player_MoveState(this, stateMachine, "Move");
@@ -155,11 +158,12 @@ public class Player : Entity
         
         input.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         input.Player.Movement.canceled += ctx => moveInput = Vector2.zero;
-
-        input.Player.ToogleSkillTreeUI.performed += ctx => ui.ToggleSkillTreeUI();
         
         input.Player.Spell.performed += ctx => skillManager.shard.TryUseSkill();
         input.Player.Spell.performed += ctx => skillManager.timeEcho.TryUseSkill();
+        
+        input.Player.ToogleSkillTreeUI.performed += ctx => ui.ToggleSkillTreeUI();
+        input.Player.ToggleInventoryUI.performed += ctx => ui.ToggleInventoryUI();
     }
 
     private void OnDisable()

@@ -20,5 +20,6 @@ public enum StatType
     Evasion,
     FireRes,
     IceRes,
-    LightningRes
+    LightningRes,
+    ElementalDmg,
 }

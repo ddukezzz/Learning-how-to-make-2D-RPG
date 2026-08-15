@@ -1,9 +1,11 @@
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Entity_Health : MonoBehaviour , IDamageable
 {
+    public event Action OnTakingDamage;
+    
     private Entity entity;
     private Entity_VFX entityVfx;
     private Entity_Stats entityStats;
@@ -72,6 +74,7 @@ public class Entity_Health : MonoBehaviour , IDamageable
 
         lastDamageTaken = physicalDamageTaken + elementalDamageTaken;
         
+        OnTakingDamage?.Invoke();
         return true;
     }
     
@@ -80,7 +83,7 @@ public class Entity_Health : MonoBehaviour , IDamageable
     private bool AttackEvade()
     {
         if (entityStats == null) return false;
-        else return Random.Range(0, 100) < entityStats.GetEvasion();
+        else return UnityEngine.Random.Range(0, 100) < entityStats.GetEvasion();
     }
 
     private void RegenerateHealth()
