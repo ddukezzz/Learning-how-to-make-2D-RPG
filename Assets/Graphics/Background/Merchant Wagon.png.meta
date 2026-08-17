@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ec1a2b5c5d5e20c48a491ebfcb74a4f9
+guid: 566a7802e90efc849ae697ca580019dc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5457132565505971404
-    second: artdecoUI_PIPO_wb_0
+      213: 5208860709715189653
+    second: Merchant Wagon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: artdecoUI_PIPO_wb_0
+      name: Merchant Wagon_0
       rect:
         serializedVersion: 2
-        x: 1073
-        y: 583
-        width: 48
-        height: 46
+        x: 129
+        y: 222
+        width: 787
+        height: 535
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cc4133bb721abbb40800000000000000
-      internalID: 5457132565505971404
+      spriteID: 59f101fb737994840800000000000000
+      internalID: 5208860709715189653
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b0a3e92ea7862c8408d5d741fe2afd64
+    spriteID: bb7bb4757d4d76c46a53d5315a46dc07
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      artdecoUI_PIPO_wb_0: 5457132565505971404
+      Merchant Wagon_0: 5208860709715189653
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
