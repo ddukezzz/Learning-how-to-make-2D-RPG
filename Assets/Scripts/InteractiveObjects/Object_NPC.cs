@@ -22,7 +22,7 @@ public class Object_NPC : MonoBehaviour
         interactiveToolTip.SetActive(false);
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         HandleNpcFlip();
         HandleToolTipFloat();
