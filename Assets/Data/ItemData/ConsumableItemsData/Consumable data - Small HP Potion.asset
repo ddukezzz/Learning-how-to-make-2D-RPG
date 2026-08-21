@@ -15,6 +15,9 @@ MonoBehaviour:
   itemPrice: 100
   minStackSizeAtShop: 1
   maxStackSizeAtShop: 5
+  itemRarity: 150
+  dropChance: 80
+  maxDropChance: 80
   craftRecipe: []
   itemName: Small HP Potion
   itemIcon: {fileID: 1934828381, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}

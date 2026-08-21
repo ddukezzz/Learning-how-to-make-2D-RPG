@@ -10,26 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06a3a6f65abf6a74381feb742ba5a480, type: 3}
-  m_Name: Equipment data - Dracula's Fang
+  m_Name: Equipment data - Wooden Sword
   m_EditorClassIdentifier: Assembly-CSharp::EquipmentDataSO
-  itemName: Dracula's Fang
-  itemIcon: {fileID: -194686513, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}
-  itemType: 1
-  maxStackSize: 1
-  itemEffect: {fileID: 11400000, guid: 0c9e6be3d35f9d0458c049c955cf3445, type: 2}
+  itemPrice: 100
+  minStackSizeAtShop: 1
+  maxStackSizeAtShop: 1
+  itemRarity: 180
+  dropChance: 82.1
+  maxDropChance: 100
   craftRecipe:
-  - itemData: {fileID: 11400000, guid: 20ef53a92b0f52c4f802d38f2cae3519, type: 2}
-    stackSize: 1
+  - itemData: {fileID: 11400000, guid: 8631772faedc6734ea336ed3e3a66a89, type: 2}
+    stackSize: 3
     itemEffect: {fileID: 0}
   - itemData: {fileID: 11400000, guid: 6dffce7b171303d4b95714e3f3de9f51, type: 2}
     stackSize: 2
     itemEffect: {fileID: 0}
+  itemName: Wooden Sword
+  itemIcon: {fileID: -1380107250, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}
+  itemType: 1
+  maxStackSize: 1
+  itemEffect: {fileID: 0}
   modifiers:
-  - statType: 3
-    value: 6
   - statType: 7
-    value: 40
-  - statType: 6
-    value: 0.2
-  - statType: 8
-    value: 0.2
+    value: 4
+  - statType: 3
+    value: 2

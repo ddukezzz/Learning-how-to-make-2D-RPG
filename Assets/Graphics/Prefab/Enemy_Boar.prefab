@@ -409,11 +409,12 @@ GameObject:
   - component: {fileID: 689017024676617424}
   - component: {fileID: 1410044574510174001}
   - component: {fileID: 3122851106573331567}
-  - component: {fileID: 3842885761170874721}
-  - component: {fileID: 6769591280451779298}
   - component: {fileID: 706370966107870423}
   - component: {fileID: 8963773715007697463}
+  - component: {fileID: 6769591280451779298}
+  - component: {fileID: 3842885761170874721}
   - component: {fileID: 5181767856973252271}
+  - component: {fileID: 7589927680704040050}
   m_Layer: 8
   m_Name: Enemy_Boar
   m_TagString: Untagged
@@ -453,11 +454,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dae0c1fa6030244884b9d7b0f464682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Boar
-  groundCheckDistance: 0.65
-  wallCheckDistance: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  groundCheckDistance: 0.65
+  wallCheckDistance: 1
   groundCheck: {fileID: 6256435555846203996}
   primaryWallCheck: {fileID: 7963677760602407705}
   secondaryWallCheck: {fileID: 0}
@@ -550,7 +551,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.5, y: 1.3659849}
   m_EdgeRadius: 0
---- !u!114 &3842885761170874721
+--- !u!114 &706370966107870423
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -559,19 +560,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 6071133528024355277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4c510b8454b10f419ba2106a775266a, type: 3}
+  m_Script: {fileID: 11500000, guid: 795b1ecc1f23e304398f330092c928bd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Entity_Combat
-  targetCheck: {fileID: 7425657752825556501}
-  targetCheckRadius: 1
-  whatIsTarget:
-    serializedVersion: 2
-    m_Bits: 128
-  defaultDuration: 3
-  chillSlowMultiplier: 0.4
-  electrifiedChargeBuildUp: 0.4
-  fireScale: 0.7
-  lightningScale: 2.5
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
+  currentHealth: 0
+  regenInterval: 1
+  canRegenerateHealth: 1
+  knockbackPower: {x: 1.5, y: 2.5}
+  heavyKnockbackPower: {x: 7, y: 7}
+  knockbackDuration: 0.2
+  heavyKnockbackDuration: 0.5
+  heavyDamageThreshold: 0.3
+--- !u!114 &8963773715007697463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6071133528024355277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc20f57dc8f7e084596e14e7121e1894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_VFX
+  onDamageMaterial: {fileID: 2100000, guid: e8cc9364c7b0e3640965433293c3f5cb, type: 2}
+  onDamageVfxDuration: 0.2
+  hitVfxColor: {r: 0.46226418, g: 0.41647387, b: 0.41647387, a: 1}
+  hitVfx: {fileID: 3286248544138586143, guid: b55ba3783749c9847a93af86cf0abb7f, type: 3}
+  critHitVfx: {fileID: 7771314919224641836, guid: efa60f538a42c8140914e175d74fe22c, type: 3}
+  chillVfx: {r: 0, g: 1, b: 1, a: 1}
+  burnVfx: {r: 1, g: 0.4895674, b: 0, a: 1}
+  electricVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  attackAlert: {fileID: 0}
 --- !u!114 &6769591280451779298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,7 +666,7 @@ MonoBehaviour:
     lightningRes:
       baseValue: 0
       modifiers: []
---- !u!114 &706370966107870423
+--- !u!114 &3842885761170874721
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -655,39 +675,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 6071133528024355277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 795b1ecc1f23e304398f330092c928bd, type: 3}
+  m_Script: {fileID: 11500000, guid: c4c510b8454b10f419ba2106a775266a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
-  currentHealth: 0
-  isDead: 0
-  regenInterval: 1
-  canRegenerateHealth: 1
-  knockbackPower: {x: 1.5, y: 2.5}
-  heavyKnockbackPower: {x: 7, y: 7}
-  knockbackDuration: 0.2
-  heavyKnockbackDuration: 0.5
-  heavyDamageThreshold: 0.3
---- !u!114 &8963773715007697463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6071133528024355277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc20f57dc8f7e084596e14e7121e1894, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy_VFX
-  onDamageMaterial: {fileID: 2100000, guid: e8cc9364c7b0e3640965433293c3f5cb, type: 2}
-  onDamageVfxDuration: 0.2
-  hitVfxColor: {r: 0.46226418, g: 0.41647387, b: 0.41647387, a: 1}
-  hitVfx: {fileID: 3286248544138586143, guid: b55ba3783749c9847a93af86cf0abb7f, type: 3}
-  critHitVfx: {fileID: 7771314919224641836, guid: efa60f538a42c8140914e175d74fe22c, type: 3}
-  chillVfx: {r: 0, g: 1, b: 1, a: 1}
-  burnVfx: {r: 1, g: 0.4895674, b: 0, a: 1}
-  electricVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  attackAlert: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Entity_Combat
+  basicAttackScale:
+    physical: 1
+    elemental: 1
+    chillDuration: 3
+    chillSlowMultiplier: 0.2
+    burnDuration: 3
+    burnDamageScale: 1
+    shockDuration: 3
+    shockDamageScale: 1
+    shockCharge: 3
+  targetCheck: {fileID: 7425657752825556501}
+  targetCheckRadius: 1
+  whatIsTarget:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &5181767856973252271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,6 +708,22 @@ MonoBehaviour:
   lightningStrikeVfx: {fileID: 6852631365149296200, guid: ab65cf81f79c2ff47b9f1b0ed4c8a83b, type: 3}
   currentCharge: 0
   maximumCharge: 1
+--- !u!114 &7589927680704040050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6071133528024355277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6233ea0bc6e94c647b3e55d1e3197910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity_DropManager
+  itemDropPrefab: {fileID: 2170601849635889059, guid: 83b19c9797e8f3549b9eb9b21660726d, type: 3}
+  dropData: {fileID: 11400000, guid: d61054fa7a41c424ab126388bef0b938, type: 2}
+  maxRarityAmount: 1200
+  maxItemsToDrop: 3
 --- !u!1 &6170105328783349292
 GameObject:
   m_ObjectHideFlags: 0

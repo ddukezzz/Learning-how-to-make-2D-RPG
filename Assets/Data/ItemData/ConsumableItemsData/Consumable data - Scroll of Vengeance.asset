@@ -15,6 +15,9 @@ MonoBehaviour:
   itemPrice: 100
   minStackSizeAtShop: 1
   maxStackSizeAtShop: 4
+  itemRarity: 500
+  dropChance: 50
+  maxDropChance: 50
   craftRecipe: []
   itemName: Scroll of Vengeance
   itemIcon: {fileID: 981388896, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}

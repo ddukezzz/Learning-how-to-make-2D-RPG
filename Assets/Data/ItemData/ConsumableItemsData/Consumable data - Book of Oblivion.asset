@@ -10,10 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6386f6ca65a413c4697a7d8d1bef171c, type: 3}
-  m_Name: Consumable data - Book of Knowledge
+  m_Name: Consumable data - Book of Oblivion
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableItemDataSO
-  itemName: Book of Knowledge
-  itemIcon: {fileID: -1106776158, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}
+  itemPrice: 100
+  minStackSizeAtShop: 1
+  maxStackSizeAtShop: 1
+  itemRarity: 800
+  dropChance: 20.1
+  maxDropChance: 50
+  craftRecipe: []
+  itemName: Book of Oblivion
+  itemIcon: {fileID: 1139922278, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}
   itemType: 4
-  maxStackSize: 5
-  itemEffect: {fileID: 11400000, guid: cbcde15513efa6e42aea4f9ec16a87a7, type: 2}
+  maxStackSize: 1
+  itemEffect: {fileID: 11400000, guid: 6426fce4345b86a4ba0f01d730479748, type: 2}

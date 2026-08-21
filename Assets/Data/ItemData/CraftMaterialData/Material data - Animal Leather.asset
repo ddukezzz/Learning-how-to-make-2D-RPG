@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e035c555eefd2624aa74d054d1747dbe, type: 3}
-  m_Name: Material data - Baguete
+  m_Name: Material data - Animal Leather
   m_EditorClassIdentifier: Assembly-CSharp::ItemDataSO
   itemPrice: 100
   minStackSizeAtShop: 1
-  maxStackSizeAtShop: 3
+  maxStackSizeAtShop: 5
+  itemRarity: 100
+  dropChance: 80
+  maxDropChance: 80
   craftRecipe: []
-  itemName: Baguete
-  itemIcon: {fileID: 1307061840, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}
+  itemName: Animal Leather
+  itemIcon: {fileID: -96219882, guid: 13a75b687bf4ea848beb694ac4afa263, type: 3}
   itemType: 0
   maxStackSize: 10
   itemEffect: {fileID: 0}
