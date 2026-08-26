@@ -9,8 +9,9 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
     protected Inventory_Player inventory;
     protected UI ui;
     protected RectTransform rect;
-    
+
     [Header("UI Slot Setup")] 
+    [SerializeField] protected GameObject defaultIcon;
     [SerializeField] protected Image itemIcon;
     [SerializeField] protected TextMeshProUGUI itemStackSize;
 
@@ -46,14 +47,17 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
     public void UpdateSlot(Inventory_Item item)
     {
         itemInSlot = item;
-
+        
+        if (defaultIcon != null)
+            defaultIcon.gameObject.SetActive(itemInSlot == null);
+        
         if (itemInSlot == null)
         {
             itemStackSize.text = "";
             itemIcon.color = Color.clear;
             return;
         }
-
+        
         Color color = Color.white;
         color.a = 0.9f;
         itemIcon.color = color;
