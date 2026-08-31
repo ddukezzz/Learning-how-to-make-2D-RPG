@@ -9,13 +9,12 @@ public class Object_Waypoint : MonoBehaviour
     [SerializeField] private RespawnType connectedWaypoint;
     [SerializeField] private Transform respawnPoint;
     [SerializeField] private bool canBeTriggered = true;
-
-    public void SetCanBeTriggered(bool canBeTriggered) => this.canBeTriggered = canBeTriggered;
     
     public RespawnType GetWaypointType() => waypointType;
 
-    public Vector3 GetPosition()
+    public Vector3 GetPositionAndSetTriggerFalse()
     {
+        canBeTriggered = false;
         return respawnPoint == null ? transform.position : respawnPoint.position;
     }
     
@@ -35,7 +34,6 @@ public class Object_Waypoint : MonoBehaviour
         if (canBeTriggered == false)
             return;
         
-        SaveManager.instance.SaveGame();
         GameManager.instance.ChangeScene(transferToScene, connectedWaypoint);
     }
 
