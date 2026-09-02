@@ -3,11 +3,13 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ISaveable
 {
     public static GameManager instance;
-    private Vector3 lastDeathPosition;
+    private Vector3 lastPlayerPosition;
 
+    private string lastScenePlayed;
+    
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -20,8 +22,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     
-    public void SetLastDeathPosition(Vector3 position) => lastDeathPosition = position;
+    // public void SetLastPlayerPosition(Vector3 position) => lastPlayerPosition = position;
 
+    public void ContinuePlay()
+    {
+        ChangeScene(lastScenePlayed, RespawnType.NonSpecific);
+    }
+    
     public void RestartScene()
     {
         string sceneName = SceneManager.GetActiveScene().name;
@@ -84,7 +91,7 @@ public class GameManager : MonoBehaviour
                 return Vector3.zero;
             
             return selectedPositions
-                .OrderBy(position => Vector3.Distance(position, lastDeathPosition)) // Arrange from Lowest to Highest by comparing Distance
+                .OrderBy(position => Vector3.Distance(position, lastPlayerPosition)) // Arrange from Lowest to Highest by comparing Distance
                 .First();
         }
 
@@ -103,5 +110,25 @@ public class GameManager : MonoBehaviour
         }
         
         return Vector3.zero;
+    }
+
+    public void LoadData(GameData data)
+    {
+        lastScenePlayed = data.lastScenePlayed;
+        lastPlayerPosition = data.lastPlayerPosition;
+
+        if (string.IsNullOrEmpty(lastScenePlayed))
+            lastScenePlayed = "Level_0";
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene == "MainMenu")
+            return;
+
+        data.lastPlayerPosition = Player.instance.transform.position;
+        data.lastScenePlayed = currentScene;
     }
 }
