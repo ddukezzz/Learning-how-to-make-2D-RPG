@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour, ISaveable
     private Vector3 lastPlayerPosition;
 
     private string lastScenePlayed;
+    private bool dataLoaded;
     
     private void Awake()
     {
@@ -38,23 +39,46 @@ public class GameManager : MonoBehaviour, ISaveable
     public void ChangeScene(string sceneName, RespawnType respawnType)
     {
         SaveManager.instance.SaveGame();
+        
+        Time.timeScale = 1f;
         StartCoroutine(ChangeSceneCo(sceneName, respawnType));
     }
 
     private IEnumerator ChangeSceneCo(string sceneName, RespawnType respawnType)
     {
-        // Fade Effect
+        UI_FadeScreen fadeScreen = FindFadeScreenUI();
         
-        yield return new WaitForSeconds(1f);
+        fadeScreen.DoFadeOut(); // Transparent -> Black
+        yield return fadeScreen.fadeEffectCo;
         
         SceneManager.LoadScene(sceneName);
+
+        dataLoaded = false; // Data loaded becomes true when load game from SaveManager
+        yield return null;
         
-        yield return new WaitForSeconds(0.2f);
+        while (dataLoaded = false)
+            yield return null;
+
+        fadeScreen = FindFadeScreenUI();
+        fadeScreen.DoFadeIn(); // Black -> Transparent
+        
+        Player player = Player.instance;
+
+        if (player == null) 
+            yield break;
 
         Vector3 position = GetNewPlayerPosition(respawnType);
         
         if (position != Vector3.zero)
-            Player.instance.TeleportPlayer(position);
+            player.TeleportPlayer(position);
+    }
+
+    private UI_FadeScreen FindFadeScreenUI()
+    {
+        if (UI.instance != null)
+            return UI.instance.fadeScreenUI;
+        else
+            return FindFirstObjectByType<UI_FadeScreen>();
     }
 
     private Vector3 GetNewPlayerPosition(RespawnType type)
@@ -119,6 +143,8 @@ public class GameManager : MonoBehaviour, ISaveable
 
         if (string.IsNullOrEmpty(lastScenePlayed))
             lastScenePlayed = "Level_0";
+        
+        dataLoaded = true;
     }
 
     public void SaveData(ref GameData data)
@@ -130,5 +156,6 @@ public class GameManager : MonoBehaviour, ISaveable
 
         data.lastPlayerPosition = Player.instance.transform.position;
         data.lastScenePlayed = currentScene;
+        dataLoaded = false;
     }
 }
