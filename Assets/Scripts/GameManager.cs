@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour, ISaveable
         dataLoaded = false; // Data loaded becomes true when load game from SaveManager
         yield return null;
         
-        while (dataLoaded = false)
+        while (dataLoaded == false)
             yield return null;
 
         fadeScreen = FindFadeScreenUI();

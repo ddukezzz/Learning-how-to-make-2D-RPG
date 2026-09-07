@@ -593,6 +593,7 @@ MonoBehaviour:
   groundCheck: {fileID: 6256435555846203996}
   primaryWallCheck: {fileID: 7963677760602407705}
   secondaryWallCheck: {fileID: 0}
+  questTargetId: Enemy_Boar
   battleMoveSpeed: 3
   attackDistance: 1.75
   battleTimeDuration: 5

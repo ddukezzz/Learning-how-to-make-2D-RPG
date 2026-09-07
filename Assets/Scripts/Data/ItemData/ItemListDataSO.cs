@@ -22,6 +22,9 @@ public class ItemListDataSO : ScriptableObject
             .Select(guid => AssetDatabase.LoadAssetAtPath<ItemDataSO>(AssetDatabase.GUIDToAssetPath(guid)))
             .Where(item => item != null)
             .ToArray();
+        
+        EditorUtility.SetDirty(this);
+        AssetDatabase.SaveAssets();
     }
 #endif
 }
