@@ -19,7 +19,7 @@ MonoBehaviour:
   questGoal: '- Talk to Blacksmith Joe'
   questTargetId: Blacksmith_Joe
   requiredAmount: 1
-  rewardType: 2
+  rewardType: 1
   rewardItems:
   - itemData: {fileID: 11400000, guid: 20ef53a92b0f52c4f802d38f2cae3519, type: 2}
     stackSize: 1

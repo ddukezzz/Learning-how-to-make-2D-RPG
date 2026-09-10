@@ -9,9 +9,14 @@ public class UI_QuestPreview : MonoBehaviour
     [SerializeField] private UI_QuestRewardSlot[] questReward;
 
     [SerializeField] private GameObject[] additionalObjects;
+    private UI_Quest questUI;
+    private QuestDataSO previewQuest;
 
     public void SetupQuestPreview(QuestDataSO questDataSO)
     {
+        questUI = transform.root.GetComponentInChildren<UI_Quest>();
+        previewQuest = questDataSO;
+        
         EnableAdditionalObjects(true);
         EnableQuestRewardObjects(true);
         
@@ -27,6 +32,14 @@ public class UI_QuestPreview : MonoBehaviour
             questReward[i].gameObject.SetActive(true);
             questReward[i].UpdateSlot(questDataSO.rewardItems[i]);
         }
+    }
+
+    public void ActivateQuestButton()
+    {
+        MakeQuestPreviewEmpty();
+        
+        questUI.questManager.AcceptQuest(previewQuest);
+        questUI.UpdateQuestList();
     }
 
     public void MakeQuestPreviewEmpty()
