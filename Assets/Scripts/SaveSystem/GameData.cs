@@ -23,6 +23,9 @@ public class GameData
     public SerializableDictionary<string, bool> unlockedCheckpoints;          // Checkpoint ID -> Unlocked status
     public SerializableDictionary<string, Vector3> inScenePortals;            // Scene name -> portal position
 
+    public SerializableDictionary<string, bool> completedQuests;              // Quest Save ID -> Complete Status
+    public SerializableDictionary<string, int> activeQuests;                 // Active Quest Save ID -> Current Progress
+    
     public string portalDestinationSceneName;
     public bool returningFromTown;
 
@@ -42,5 +45,8 @@ public class GameData
         
         unlockedCheckpoints = new SerializableDictionary<string, bool>();
         inScenePortals = new SerializableDictionary<string, Vector3>();
+        
+        completedQuests = new SerializableDictionary<string, bool>();
+        activeQuests = new SerializableDictionary<string, int>();
     }
 }

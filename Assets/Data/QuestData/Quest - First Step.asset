@@ -16,9 +16,7 @@ MonoBehaviour:
   questName: First Step
   description: 'Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
     Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah '
-  questGoal: '- Eliminate 2 Wild Boars
-
-'
+  questGoal: "- Eliminate Wild Boars: \n"
   questTargetId: Enemy_Boar
   requiredAmount: 2
   rewardType: 0
