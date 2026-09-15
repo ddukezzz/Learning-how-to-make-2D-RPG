@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb730bbe774e256448d5ba78ef2bb81c, type: 3}
+  m_Name: Line - MerchantBob_1
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueLineSO
+  dialogueGroupName: Merchant Bob
+  speaker: {fileID: 11400000, guid: 4feda5570c7ccb94faa72ec2d3030e3a, type: 2}
+  textLine:
+  - I'm busy! Buy something! Quick!
+  - Oh there you are! Back for more supplies?
+  - Took ya long enough! How about my quest? Is it done yet?
+  - Miss me, do ya? Hah hah hah... Now buy something or scram
+  actionType: 1
