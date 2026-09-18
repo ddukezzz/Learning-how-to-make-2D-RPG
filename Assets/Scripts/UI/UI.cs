@@ -89,6 +89,14 @@ public class UI : MonoBehaviour
             if (dialogueUI.gameObject.activeInHierarchy)
                 dialogueUI.DialogueInteraction();
         };
+
+        input.UI.DialogueNavigation.performed += ctx =>
+        {
+            int direction = Mathf.RoundToInt(ctx.ReadValue<float>());
+            
+            if (dialogueUI.gameObject.activeInHierarchy)
+                dialogueUI.NavigateChoice(direction);
+        };
     }
 
     public void OpenDeathScreenUI()
@@ -168,12 +176,13 @@ public class UI : MonoBehaviour
         StopPlayerControlsIfNeeded();
     }
 
-    public void OpenDialogueUI(DialogueLineSO firstLine)
+    public void OpenDialogueUI(DialogueLineSO firstLine, DialogueNpcData npcData)
     {
         StopPlayerControls(true);
         HideAllToolTips();
         
         dialogueUI.gameObject.SetActive(true);
+        dialogueUI.SetupNpcData(npcData);
         dialogueUI.PlayDialogueLine(firstLine);
     }
 
@@ -193,7 +202,19 @@ public class UI : MonoBehaviour
 
         if (openStorageUI == false)
         {
-            craftUI.gameObject.gameObject.SetActive(false);
+            craftUI.gameObject.SetActive(false);
+            HideAllToolTips();
+        }
+    }
+    
+    public void OpenCraftUI(bool openCraftUI)
+    {
+        craftUI.gameObject.SetActive(openCraftUI);
+        StopPlayerControls(openCraftUI);
+
+        if (openCraftUI == false)
+        {
+            craftUI.gameObject.SetActive(false);
             HideAllToolTips();
         }
     }

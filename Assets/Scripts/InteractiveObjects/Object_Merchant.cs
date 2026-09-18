@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Object_Merchant : Object_NPC, IInteractable
@@ -28,9 +27,9 @@ public class Object_Merchant : Object_NPC, IInteractable
         base.Interact();
         
         ui.merchantUI.SetupMerchantUI(merchant, inventory);
-        ui.OpenDialogueUI(firstDialogueLine);
+        ui.OpenDialogueUI(firstDialogueLine, new DialogueNpcData(rewardNpc, quests));
         
-        //ui.OpenQuestUI(quests);
+        // ui.OpenQuestUI(quests);
         // ui.OpenMerchantUI(true);
     }
 

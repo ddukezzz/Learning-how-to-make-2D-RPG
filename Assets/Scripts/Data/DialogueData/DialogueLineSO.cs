@@ -9,9 +9,16 @@ public class DialogueLineSO : ScriptableObject
 
     [Header("Text Options")] 
     [TextArea] public string[] textLine;
+
+    [Header("Choice Infos")] 
+    [TextArea] public string playerChoiceAnswer;
+    public DialogueLineSO[] choiceLines;
     
-    [Header("Dialogue Action")]
+    [Header("Dialogue Action")] 
+    [TextArea] public string actionLine;
     public DialogueActionType actionType;
+    
+    public string GetFirstLine() => textLine[0];
     
     public string GetRandomLine()
     {
