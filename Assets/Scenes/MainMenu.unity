@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bravery
+  m_text: DAWNBRINGER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2384d14e6f566664cb43557768c0fcb5, type: 2}
   m_sharedMaterial: {fileID: 3358109349417300566, guid: 2384d14e6f566664cb43557768c0fcb5, type: 2}
